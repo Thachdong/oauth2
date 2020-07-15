@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashBoard</title>
+    <style>
+      .container {
+        max-width: 1340px;
+        margin: 0 auto;
+      }
+      .dashboard {
+        margin-top: 1rem;
+        padding: 0 0.5rem;
+      }
+      .info {
+        max-width: 35rem;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        padding: 1rem;
+        border-radius: 5px;
+      }
+      .info p {
+        padding: 0.5rem 0;
+      }
+      .avatar-box {
+        display: flex;
+        align-items: center;
+      }
+      .avatar-box img {
+        margin-left: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/navbar.ejs', { user: user }) %>
+    <div class="container dashboard">
+      <div class="info">
+        <p>
+          You have logged in with <%= user.oauthProvider%>
+        </p>
+        <p>Your display name: <%= user.userName%></p>
+        <p>
+          Your <%= user.oauthProvider%>Id: <%= user.facebookId || user.googleId
+          || user.twitterId || user.githubId%>
+        </p>
+        <p>Your email: <%= user.email%></p>
+        <p class="avatar-box">
+          Your avatar
+          <img src="<%=user.avatar%>" width="75" />
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
